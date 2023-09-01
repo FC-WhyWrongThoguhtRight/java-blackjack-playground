@@ -28,7 +28,7 @@ public class StreamStudyTest {
     }
 
     @Test
-    public void map() throws Exception {
+    public void mapDouble() throws Exception {
         List<Integer> doubleNumbers = StreamStudy.doubleNumbers(numbers);
         doubleNumbers.forEach(System.out::println);
     }
