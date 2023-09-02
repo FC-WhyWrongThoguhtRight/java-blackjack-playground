@@ -20,8 +20,8 @@ public class Game {
     private final Distributor distributor;
     private final CalculateStrategy calculateStrategy;
 
-    private List<User> users = new ArrayList<>();
-    private User dealer = new User(DEALER_NAME, null);
+    private final List<User> users = new ArrayList<>();
+    private final User dealer = new User(DEALER_NAME, null);
 
     public Game() {
         this.distributor = new Distributor(new RandomDistributeStrategy());
@@ -72,16 +72,15 @@ public class Game {
 
     public String getUserNames() {
         StringBuilder sb = new StringBuilder();
-        users.stream().forEach((user) -> sb.append(user.getName()).append(", "));
+        users.forEach((user) -> sb.append(user.getName()).append(", "));
         return sb.substring(0, sb.length() - 2);
     }
 
     public String getAllCards() {
         StringBuilder sb = new StringBuilder();
         sb.append(dealer.getCards()).append('\n');
-        users.stream()
-                .forEach((user) ->
-                        sb.append(user.getCards()).append('\n'));
+        users.forEach((user) ->
+                sb.append(user.getCards()).append('\n'));
         return sb.toString();
     }
 
@@ -92,19 +91,17 @@ public class Game {
     public String getResult() {
         StringBuilder sb = new StringBuilder();
         sb.append(dealer.getCards()).append(DELIMITER).append(dealer.getResult()).append('\n');
-        users.stream()
-                .forEach((user) ->
-                        sb.append(user.getCards()).append(DELIMITER).append(user.getResult()).append('\n'));
+        users.forEach((user) ->
+                sb.append(user.getCards()).append(DELIMITER).append(user.getResult()).append('\n'));
         return sb.toString();
     }
 
     public String getProfit() {
         StringBuilder sb = new StringBuilder();
         sb.append("## 최종 수익").append('\n');
-        users.stream()
-                .forEach((user) ->
-                        sb.append(user.getName())
-                                .append(DELIMITER).append(user.getProfit()).append('\n'));
+        users.forEach((user) ->
+                sb.append(user.getName())
+                        .append(DELIMITER).append(user.getProfit()).append('\n'));
         return sb.toString();
     }
 

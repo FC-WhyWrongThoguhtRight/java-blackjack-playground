@@ -10,8 +10,8 @@ import static camp.next.constant.BlackJackConst.MAX_VALUE;
 public class User {
     public static final String DELIMITER = ": ";
 
-    private String name;
-    private Cards cards;
+    private final String name;
+    private final Cards cards;
     private Integer batAmount;
     private Integer profit;
     private PayStrategy payStrategy;
@@ -46,9 +46,8 @@ public class User {
 
     public String getCards() {
         String name = this.name;
-        String delimiter = DELIMITER;
         String cards = this.cards.toString();
-        return name + delimiter + cards;
+        return name + DELIMITER + cards;
     }
 
     public boolean isDistributed() {

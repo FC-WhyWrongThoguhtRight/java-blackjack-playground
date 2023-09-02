@@ -8,7 +8,7 @@ import java.util.List;
 public class Cards {
     private static final String emptyCard = "";
 
-    private List<Card> cardList = new ArrayList<>();
+    private final List<Card> cardList = new ArrayList<>();
     private Integer result;
 
     public void addCard(Card card) {
