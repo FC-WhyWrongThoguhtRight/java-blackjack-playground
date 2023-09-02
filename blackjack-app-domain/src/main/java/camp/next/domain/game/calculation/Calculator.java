@@ -14,15 +14,11 @@ public class Calculator implements CalculateStrategy {
         for (Card card : cards.getCardList()) {
             sum += card.getValue();
         }
-        outer:
-        while (sum >= MAX_VALUE) {
-            for (Card card : cards.getCardList()) {
-                if (card.isAce() && card.isConverted()) {
-                    card.convert();
-                    sum -= DIFF_ACE;
-                    continue outer;
-                }
-            }
+
+        Card unconvertedAce;
+        while (sum > MAX_VALUE && (unconvertedAce = cards.findUnconvertedAce()) != null) {
+            unconvertedAce.convert();
+            sum -= DIFF_ACE;
         }
         return sum;
     }

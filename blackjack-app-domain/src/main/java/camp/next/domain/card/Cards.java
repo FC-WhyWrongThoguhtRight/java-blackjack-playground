@@ -37,4 +37,11 @@ public class Cards {
     public Integer getResult() {
         return this.result;
     }
+
+    public Card findUnconvertedAce() {
+        return cardList.stream()
+                .filter(Card::isAce)
+                .filter(Card::isNotConverted)
+                .findFirst().orElse(null);
+    }
 }

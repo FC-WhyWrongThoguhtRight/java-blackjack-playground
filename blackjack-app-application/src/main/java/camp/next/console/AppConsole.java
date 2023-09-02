@@ -97,17 +97,11 @@ public class AppConsole {
     }
 
     private Processor finishGame() {
-        System.out.println("00");
         while (game.requiresDealerDistributed()) {
-            System.out.println("11");
             game.distribute(game.getDealer());
-            System.out.println("22");
             output.println(String.format(DEALER_DISTRIBUTE_DISPLAY, DEALER_BOUND));
-            System.out.println("33");
         }
-        System.out.println("44");
         game.finish();
-        System.out.println("55");
         output.println(game.getResult());
         output.println(game.getProfit());
         shutDown();

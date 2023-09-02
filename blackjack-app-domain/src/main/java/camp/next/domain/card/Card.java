@@ -3,7 +3,7 @@ package camp.next.domain.card;
 public class Card {
     private final Denomination number;
     private final Suit suit;
-    private boolean converted = false;
+    private boolean notConverted = true;
 
     public Card(Denomination number, Suit suit) {
         this.number = number;
@@ -18,12 +18,12 @@ public class Card {
         return this.number == Denomination.ACE;
     }
 
-    public boolean isConverted() {
-        return converted;
+    public boolean isNotConverted() {
+        return notConverted;
     }
 
     public void convert() {
-        this.converted = true;
+        this.notConverted = false;
     }
 
     @Override
