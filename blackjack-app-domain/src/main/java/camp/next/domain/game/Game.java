@@ -11,10 +11,11 @@ import camp.next.domain.user.strategy.NormalPayStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.next.constant.BlackJackConst.DEALER_BOUND;
+
 public class Game {
     public static final int FIRST_DISTRIBUTION_TIME = 2;
     public static final String DEALER_NAME = "딜러";
-    public static final int DEALER_BOUND = 16;
     public static final String DELIMITER = " - ";
 
     private final Distributor distributor;

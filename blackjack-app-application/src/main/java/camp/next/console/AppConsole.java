@@ -6,6 +6,8 @@ import camp.next.exception.input.InvalidBatAmountException;
 import camp.next.exception.input.InvalidUserNameException;
 import camp.next.validator.InputParser;
 
+import static camp.next.constant.BlackJackConst.DEALER_BOUND;
+
 public class AppConsole {
     private static final String USERNAME_INPUT_DISPLAY = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
     private static final String INVALID_INPUT_DISPLAY = "잘못된 형식의 입력입니다. 다시 입력해주세요";
@@ -100,7 +102,7 @@ public class AppConsole {
             System.out.println("11");
             game.distribute(game.getDealer());
             System.out.println("22");
-            output.println(String.format(DEALER_DISTRIBUTE_DISPLAY, game.DEALER_BOUND));
+            output.println(String.format(DEALER_DISTRIBUTE_DISPLAY, DEALER_BOUND));
             System.out.println("33");
         }
         System.out.println("44");

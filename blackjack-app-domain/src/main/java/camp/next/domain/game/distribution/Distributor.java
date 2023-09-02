@@ -8,7 +8,7 @@ import java.util.Set;
 public class Distributor {
     private final DistributeStrategy distributeStrategy;
 
-    private Set<Card> selected = new HashSet<>();
+    private final Set<Card> selected = new HashSet<>();
 
     public Distributor(DistributeStrategy distributeStrategy) {
         this.distributeStrategy = distributeStrategy;
