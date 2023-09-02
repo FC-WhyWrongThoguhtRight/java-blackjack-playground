@@ -2,7 +2,7 @@ package camp.next.domain.user.strategy;
 
 public class NormalPayStrategy implements PayStrategy {
     @Override
-    public Integer calculate(Integer batAmount) {
+    public Integer pay(Integer batAmount) {
         return batAmount;
     }
 }

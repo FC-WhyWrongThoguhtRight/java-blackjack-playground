@@ -14,7 +14,7 @@ public class User {
     private final Cards cards;
     private Integer batAmount;
     private Integer profit;
-    private PayStrategy payStrategy;
+    private final PayStrategy payStrategy;
     private boolean isDistributed = false;
 
     public User(String name, PayStrategy payStrategy) {
@@ -73,13 +73,13 @@ public class User {
     public void setProfit(Integer dealerValue) {
         Integer result = cards.getResult();
         if (result > MAX_VALUE) {
-            this.profit -= this.batAmount;
+            this.profit -= payStrategy.pay(this.batAmount);
             return;
         }
         if (dealerValue > MAX_VALUE || dealerValue < result) {
-            this.profit += this.batAmount;
+            this.profit += payStrategy.pay(this.batAmount);
         } else {
-            this.profit -= this.batAmount;
+            this.profit -= payStrategy.pay(this.batAmount);
         }
     }
 }
