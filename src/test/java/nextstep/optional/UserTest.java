@@ -1,5 +1,6 @@
 package nextstep.optional;
 
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import static nextstep.optional.User.ageIsInRange1;
