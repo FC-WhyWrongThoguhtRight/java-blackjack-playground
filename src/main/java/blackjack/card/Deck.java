@@ -19,7 +19,7 @@ public class Deck {
 
     private void suffleDeck() {
         List<Card> cards = new ArrayList<>();
-        for (NUMBER n : NUMBER.values()) {
+        for (RANK n : RANK.values()) {
             for (SUIT s : SUIT.values()) {
                 cards.add(new Card(n, s));
             }

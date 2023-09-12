@@ -2,7 +2,7 @@ package blackjack.card;
 
 import java.util.Optional;
 
-public enum NUMBER {
+public enum RANK {
 
     ACE("A", 1),
     TWO("2", 2),
@@ -21,7 +21,7 @@ public enum NUMBER {
     private final String number;
     private final Integer value;
 
-    NUMBER(String number, Integer value) {
+    RANK(String number, Integer value) {
         this.number = number;
         this.value = value;
     }

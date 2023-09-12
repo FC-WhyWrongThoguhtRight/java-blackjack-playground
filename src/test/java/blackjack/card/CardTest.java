@@ -8,31 +8,31 @@ public class CardTest {
 
     @Test
     void Card는숫자와무늬를가진다() {
-        Card card = new Card(NUMBER.ACE, SUIT.HEART);
-        assertThat(card).isEqualTo(new Card(NUMBER.ACE, SUIT.HEART));
+        Card card = new Card(RANK.ACE, SUIT.HEART);
+        assertThat(card).isEqualTo(new Card(RANK.ACE, SUIT.HEART));
     }
 
     @Test
     void CardQ하트의ToString() {
-        Card card = new Card(NUMBER.QUEEN, SUIT.HEART);
+        Card card = new Card(RANK.QUEEN, SUIT.HEART);
         assertThat(card.toString()).isEqualTo("Q하트");
     }
 
     @Test
     void CardACE다이아몬드toString() {
-        Card card = new Card(NUMBER.ACE, SUIT.DIAMOND);
+        Card card = new Card(RANK.ACE, SUIT.DIAMOND);
         assertThat(card.toString()).isEqualTo("A다이아몬드");
     }
 
     @Test
     void Card의ACE하트를1로봄() {
-        Card card = new Card(NUMBER.ACE, SUIT.HEART);
+        Card card = new Card(RANK.ACE, SUIT.HEART);
         assertThat(card.getValue()).isEqualTo(1);
     }
 
     @Test
     void Card의ACE하트를11로봄() {
-        Card card = new Card(NUMBER.ACE, SUIT.HEART);
+        Card card = new Card(RANK.ACE, SUIT.HEART);
         assertThat(card.getValue(() -> 11)).isEqualTo(11);
     }
 

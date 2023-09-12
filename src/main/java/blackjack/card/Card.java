@@ -4,18 +4,27 @@ import java.util.Objects;
 
 public class Card {
 
-    private final NUMBER number;
+    private final RANK RANK;
     private final SUIT suit;
 
-    public Card(NUMBER number, SUIT suit) {
-        this.number = number;
+    public Card(RANK RANK, SUIT suit) {
+        this.RANK = RANK;
         this.suit = suit;
+    }
+
+
+    public Integer getValue() {
+        return RANK.getValue();
+    }
+
+    public Integer getValue(NumberStrategy strategy) {
+        return RANK.getValue(strategy);
     }
 
 
     @Override
     public String toString() {
-        return number.toString() + suit.toString();
+        return RANK.toString() + suit.toString();
     }
 
     @Override
@@ -27,20 +36,13 @@ public class Card {
             return false;
         }
         Card card = (Card) o;
-        return number == card.number;
+        return RANK == card.RANK;
     }
 
-    public Integer getValue() {
-        return number.getValue();
-    }
-
-    public Integer getValue(NumberStrategy strategy) {
-        return number.getValue(strategy);
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number);
+        return Objects.hash(RANK);
     }
 
 }
