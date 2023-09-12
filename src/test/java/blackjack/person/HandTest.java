@@ -4,6 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.card.Card;
 import blackjack.card.Deck;
+import blackjack.card.NumberStrategy;
+import blackjack.card.RANK;
+import blackjack.card.SUIT;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +20,17 @@ public class HandTest {
     @BeforeEach
     void setUp() {
         hand = new Hand();
-        deck = new Deck();
+        deck = new Deck(){
+            @Override
+            public List<Card> shuffle() {
+                List<Card> cards = new ArrayList<>();
+                cards.add(new Card(RANK.ACE, SUIT.HEART));
+                cards.add(new Card(RANK.TWO, SUIT.CLUB));
+                cards.add(new Card(RANK.SEVEN, SUIT.SPADE));
+                cards.add(new Card(RANK.ACE, SUIT.HEART));
+                return cards;
+            }
+        };
     }
 
 
@@ -26,20 +41,21 @@ public class HandTest {
 
     @Test
     void 덱에서꺼내핸드에추가() {
-        Card card = deck.draw();
-        hand.add(card);
-        assertThat(hand.get(0)).isEqualTo(card);
+        hand.add(deck.draw());
+        assertThat(hand.get(0)).isEqualTo(new Card(RANK.ACE, SUIT.HEART));
     }
 
     @Test
     void 덱에서2개꺼내서추가점수확인() {
-        Card card1 = deck.draw();
-        Card card2 = deck.draw();
 
-        hand.add(card1);
-        hand.add(card2);
+        hand.add(deck.draw());
+        hand.add(deck.draw());
 
-        assertThat(hand.sum()).isEqualTo(card1.getValue() + card2.getValue());
+        assertThat(hand.sum()).isEqualTo(3);
+    }
+
+    @Test
+    void 핸드의ACE를11로보고점수확인(){
 
     }
 

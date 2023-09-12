@@ -20,4 +20,8 @@ public class Person {
     public String toString() {
         return name + "카드 : " + hand;
     }
+
+    public Integer sum() {
+        return hand.sum();
+    }
 }

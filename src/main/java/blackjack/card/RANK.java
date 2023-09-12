@@ -32,7 +32,8 @@ public enum RANK {
     }
 
     public Integer getValue(NumberStrategy strategy) {
-        return Optional.ofNullable(strategy.getValue()).orElse(this.value);
+        return Optional.ofNullable(strategy.getValue())
+            .orElse(this.value);
     }
 
     @Override
