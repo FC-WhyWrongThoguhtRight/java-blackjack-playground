@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Deck{
+public class Deck {
 
     Queue<Card> deck;
 
@@ -17,7 +17,6 @@ public class Deck{
     }
 
     private void suffleDeck() {
-
 
         deck.addAll(shuffle());
     }

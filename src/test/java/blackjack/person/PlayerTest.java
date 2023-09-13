@@ -11,14 +11,14 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class PersonTest {
+public class PlayerTest {
 
-    Person person;
+    Player person;
     Deck deck;
 
     @BeforeEach
     void setUp() {
-        person = new Person("철수");
+        person = new Player("철수");
         deck = new Deck(){
             @Override
             public List<Card> shuffle() {

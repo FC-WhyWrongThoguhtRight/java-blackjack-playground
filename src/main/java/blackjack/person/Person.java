@@ -2,26 +2,23 @@ package blackjack.person;
 
 import blackjack.card.Deck;
 
-public class Person {
+public interface Person {
 
-    private final String name;
-    private final Hand hand;
+    void batting();
 
-    public Person(String name) {
-        this.name = name;
-        this.hand = new Hand();
-    }
+    void hit(Deck deck);
 
-    public void hit(Deck deck) {
-        hand.add(deck.draw());
-    }
+    String getName();
 
-    @Override
-    public String toString() {
-        return name + "카드 : " + hand;
-    }
+    void moreDraw(Deck deck);
 
-    public Integer sum() {
-        return hand.sum();
-    }
+    Integer sum();
+
+    boolean isBust();
+
+    void win(Person dealer);
+
+    Integer loseMoney(Integer money);
+
+    Integer getMoney();
 }
