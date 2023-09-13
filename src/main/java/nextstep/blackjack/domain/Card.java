@@ -5,7 +5,7 @@ public record Card(
     String value
 ) {
 
-    public int[] getScore() {
+    public int[] getScores() {
         if ("A".equals(value)) {
             return new int[] { 1, 11 };
         }
