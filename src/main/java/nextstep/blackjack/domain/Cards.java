@@ -9,8 +9,16 @@ import java.util.Set;
 public class Cards {
     List<Card> cards;
 
-    public Cards(List<Card> cards) {
-        this.cards = cards;
+    public Cards() {
+        this.cards = new ArrayList<>();
+    }
+
+    public void add(Card card) {
+        cards.add(card);
+    }
+
+    public int getBestScore() {
+        return Arrays.stream(getScores()).filter(score -> score <= 21).max().orElse(22);
     }
 
     public int[] getScores() {
