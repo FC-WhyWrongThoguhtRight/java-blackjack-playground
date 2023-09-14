@@ -36,5 +36,9 @@ public class Players {
     }
 
 
-
+    public void bat() {
+        for(Player player : players){
+            player.bat();
+        }
+    }
 }
