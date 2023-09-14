@@ -1,7 +1,5 @@
 package blackjack.view;
 
-import blackjack.person.Person;
-import blackjack.person.Players;
 import java.util.Scanner;
 
 public class InputView {

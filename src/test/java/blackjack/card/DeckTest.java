@@ -2,6 +2,8 @@ package blackjack.card;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import blackjack.model.person.card.Card;
+import blackjack.model.person.card.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

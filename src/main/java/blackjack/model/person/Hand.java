@@ -1,7 +1,7 @@
-package blackjack.person;
+package blackjack.model.person;
 
 
-import blackjack.card.Card;
+import blackjack.model.card.Card;
 import java.util.ArrayList;
 import java.util.List;
 

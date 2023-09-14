@@ -2,11 +2,11 @@ package blackjack.person;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import blackjack.card.Card;
-import blackjack.card.Deck;
-import blackjack.card.NumberStrategy;
-import blackjack.card.RANK;
-import blackjack.card.SUIT;
+import blackjack.model.person.card.Card;
+import blackjack.model.person.card.Deck;
+import blackjack.model.person.card.RANK;
+import blackjack.model.person.card.SUIT;
+import blackjack.model.person.Hand;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;

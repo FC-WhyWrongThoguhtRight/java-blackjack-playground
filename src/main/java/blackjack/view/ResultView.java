@@ -1,9 +1,7 @@
 package blackjack.view;
 
-import blackjack.person.Dealer;
-import blackjack.person.Person;
-import blackjack.person.Player;
-import blackjack.person.Players;
+import blackjack.model.person.Dealer;
+import blackjack.model.person.Players;
 
 public class ResultView {
 

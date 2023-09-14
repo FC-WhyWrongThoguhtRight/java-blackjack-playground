@@ -2,6 +2,9 @@ package blackjack.card;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import blackjack.model.person.card.Card;
+import blackjack.model.person.card.RANK;
+import blackjack.model.person.card.SUIT;
 import org.junit.jupiter.api.Test;
 
 public class CardTest {

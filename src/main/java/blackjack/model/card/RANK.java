@@ -1,4 +1,4 @@
-package blackjack.card;
+package blackjack.model.person.card;
 
 import java.util.Optional;
 
@@ -31,9 +31,8 @@ public enum RANK {
         return this.value;
     }
 
-    public Integer getValue(NumberStrategy strategy) {
-        return Optional.ofNullable(strategy.getValue())
-            .orElse(this.value);
+    public boolean isAce(){
+        return this == ACE;
     }
 
     @Override

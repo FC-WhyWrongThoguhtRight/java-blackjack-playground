@@ -1,6 +1,6 @@
 package blackjack;
 
-import blackjack.game.BlackJack;
+import blackjack.controller.Game;
 
 public class App {
 
@@ -9,7 +9,7 @@ public class App {
     }
 
     private static void run() {
-        BlackJack blackJack = new BlackJack();
+        Game blackJack = new Game();
         blackJack.play();
     }
 }

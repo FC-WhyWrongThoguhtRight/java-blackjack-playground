@@ -1,4 +1,4 @@
-package blackjack.card;
+package blackjack.model.person.card;
 
 public enum SUIT {
 
