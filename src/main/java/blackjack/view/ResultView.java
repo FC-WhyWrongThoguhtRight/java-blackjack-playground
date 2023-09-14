@@ -1,6 +1,7 @@
 package blackjack.view;
 
 import blackjack.model.person.Dealer;
+import blackjack.model.person.Player;
 import blackjack.model.person.Players;
 
 public class ResultView {
@@ -9,12 +10,12 @@ public class ResultView {
 
         System.out.println("딜러와 " + players.getNames() + "에게 2장씩 나누었습니다.");
         showHand(dealer);
-        for(Person person : players.getList()){
+        for(Player person : players.getList()){
             showHand(person);
         }
     }
 
-    public static void showHand(Person player) {
+    public static void showHand(Player player) {
         System.out.println(player.toString());
     }
 
@@ -24,12 +25,12 @@ public class ResultView {
 
     public static void result(Dealer dealer, Players players) {
         showResult(dealer);
-        for (Person person : players.getList()){
+        for (Player person : players.getList()){
             showResult(person);
         }
     }
 
-    public static void showResult(Person person){
-        System.out.println(person.toString() + " - " + "결과: " + person.sum() );
+    public static void showResult(Player person){
+        System.out.println(person.toString() + " - " + "결과: " + person.getSum() );
     }
 }

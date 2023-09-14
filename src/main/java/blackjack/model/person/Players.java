@@ -22,5 +22,19 @@ public class Players {
     }
 
 
+    public String getNames() {
+        StringBuilder sb = new StringBuilder();
+        for(Player player : players){
+            sb.append(player.getName()).append(",");
+        }
+        sb.delete(sb.length() - 1, sb.length());
+        return sb.toString();
+    }
+
+    public List<Player> getList(){
+        return players;
+    }
+
+
 
 }

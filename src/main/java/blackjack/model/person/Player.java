@@ -11,11 +11,16 @@ public class Player{
         this.hand = new Hand();
     }
 
+    public Integer getSum(){
+        return hand.sum();
+    }
+
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {
         return name + "카드 : " + hand;
     }
-
-
 }
