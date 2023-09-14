@@ -1,6 +1,9 @@
 package camp.next.console;
 
 import camp.next.domain.game.Game;
+import camp.next.domain.game.calculation.Calculator;
+import camp.next.domain.game.distribution.Distributor;
+import camp.next.domain.game.distribution.RandomDistributeStrategy;
 import camp.next.domain.user.User;
 import camp.next.exception.input.InvalidBatAmountException;
 import camp.next.exception.input.InvalidUserNameException;
@@ -39,7 +42,7 @@ public class AppConsole {
                 output.println(INVALID_INPUT_DISPLAY);
                 return this.processor;
             }
-            game = new Game();
+            game = new Game(new Distributor(new RandomDistributeStrategy()), new Calculator());
             game.createUser(userNames);
             return getBat();
         };
@@ -66,9 +69,9 @@ public class AppConsole {
     }
 
     private Processor startGame() {
-        game.start();
-        output.println(String.format(START_GAME_DISPLAY, game.getUserNames()));
-        output.println(game.getAllCards());
+        game.init();
+        output.println(String.format(START_GAME_DISPLAY, game.showUserNames()));
+        output.println(game.showAllCards());
         return distributeCard();
     }
 
@@ -82,7 +85,7 @@ public class AppConsole {
                     case "y":
                     case "Y":
                         game.distribute(undistributedUser);
-                        output.println(undistributedUser.getCards());
+                        output.println(undistributedUser.showCards());
                         return distributeCard();
                     case "n":
                     case "N":
@@ -101,9 +104,8 @@ public class AppConsole {
             game.distribute(game.getDealer());
             output.println(String.format(DEALER_DISTRIBUTE_DISPLAY, DEALER_BOUND));
         }
-        game.finish();
-        output.println(game.getResult());
-        output.println(game.getProfit());
+        output.println(game.showResult());
+        output.println(game.showProfit());
         shutDown();
         return null;
     }

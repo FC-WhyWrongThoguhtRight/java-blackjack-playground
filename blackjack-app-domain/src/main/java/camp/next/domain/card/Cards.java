@@ -4,23 +4,34 @@ import camp.next.domain.game.calculation.CalculateStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static camp.next.constant.BlackJackConst.BUST_VALUE;
 
 public class Cards {
     private static final String emptyCard = "";
 
+    private final CalculateStrategy strategy;
     private final List<Card> cardList = new ArrayList<>();
-    private Integer result;
 
-    public void addCard(Card card) {
+    public Cards(CalculateStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void add(Card card) {
         cardList.add(card);
     }
 
-    public Integer calculate(CalculateStrategy strategy) {
+    public Integer calculate() {
         return strategy.calculate(this);
     }
 
     public List<Card> getCardList() {
         return cardList;
+    }
+
+    public List<Card> getAceList() {
+        return cardList.stream().filter(Card::isAce).collect(Collectors.toList());
     }
 
     public String toString() {
@@ -30,18 +41,11 @@ public class Cards {
                 .orElse(emptyCard);
     }
 
-    public void setResult(Integer calculatedValue) {
-        this.result = calculatedValue;
+    public boolean isBust() {
+        return strategy.calculate(this) > BUST_VALUE;
     }
 
-    public Integer getResult() {
-        return this.result;
-    }
-
-    public Card findUnconvertedAce() {
-        return cardList.stream()
-                .filter(Card::isAce)
-                .filter(Card::isNotConverted)
-                .findFirst().orElse(null);
+    public boolean isBlackjack() {
+        return strategy.calculate(this) == BUST_VALUE;
     }
 }

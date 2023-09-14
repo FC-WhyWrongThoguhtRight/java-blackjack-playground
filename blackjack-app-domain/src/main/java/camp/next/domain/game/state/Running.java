@@ -13,7 +13,7 @@ public abstract class Running extends Started {
     }
 
     @Override
-    public double profit(double d) {
-        return 0;
+    public double profit(double batAmount) {
+        throw new RuntimeException("아직 게임이 끝나지 않았습니다.");
     }
 }

@@ -10,22 +10,22 @@ public abstract class Finished extends Started {
 
     @Override
     public State draw(final Card card) {
-        return null;
+        throw new RuntimeException("이미 끝난 게임입니다.");
     }
 
     @Override
     public State stay() {
-        return null;
+        throw new RuntimeException("이미 끝난 게임입니다.");
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override
-    public double profit(double d) {
-        return 0;
+    public double profit(double batAmount) {
+        return batAmount * earningRate();
     }
 
     public abstract double earningRate();

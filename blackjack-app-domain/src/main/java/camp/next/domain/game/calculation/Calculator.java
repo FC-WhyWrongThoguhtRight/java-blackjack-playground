@@ -3,7 +3,7 @@ package camp.next.domain.game.calculation;
 import camp.next.domain.card.Card;
 import camp.next.domain.card.Cards;
 
-import static camp.next.constant.BlackJackConst.MAX_VALUE;
+import static camp.next.constant.BlackJackConst.BUST_VALUE;
 
 public class Calculator implements CalculateStrategy {
     public static final int DIFF_ACE = 10;
@@ -15,10 +15,10 @@ public class Calculator implements CalculateStrategy {
             sum += card.getValue();
         }
 
-        Card unconvertedAce;
-        while (sum > MAX_VALUE && (unconvertedAce = cards.findUnconvertedAce()) != null) {
-            unconvertedAce.convert();
+        int ace = cards.getAceList().size();
+        while (sum > BUST_VALUE && ace > 0) {
             sum -= DIFF_ACE;
+            ace--;
         }
         return sum;
     }

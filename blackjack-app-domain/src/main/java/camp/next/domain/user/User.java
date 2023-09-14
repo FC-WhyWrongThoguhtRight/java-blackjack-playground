@@ -3,25 +3,20 @@ package camp.next.domain.user;
 import camp.next.domain.card.Card;
 import camp.next.domain.card.Cards;
 import camp.next.domain.game.calculation.CalculateStrategy;
-import camp.next.domain.user.strategy.PayStrategy;
+import camp.next.domain.game.state.Hit;
+import camp.next.domain.game.state.State;
 
-import static camp.next.constant.BlackJackConst.MAX_VALUE;
+import static camp.next.constant.BlackJackConst.BUST_VALUE;
+import static camp.next.constant.BlackJackConst.DELIMITER_1;
 
 public class User {
-    public static final String DELIMITER = ": ";
-
     private final String name;
-    private final Cards cards;
     private Integer batAmount;
-    private Integer profit;
-    private final PayStrategy payStrategy;
-    private boolean isDistributed = false;
+    private State state;
 
-    public User(String name, PayStrategy payStrategy) {
+    public User(String name, CalculateStrategy strategy) {
         this.name = name;
-        this.cards = new Cards();
-        this.profit = 0;
-        this.payStrategy = payStrategy;
+        this.state = new Hit(new Cards(strategy));
     }
 
     public String getName() {
@@ -29,11 +24,11 @@ public class User {
     }
 
     public void addCard(Card card) {
-        cards.addCard(card);
+        state = state.draw(card);
     }
 
-    public Integer calculate(CalculateStrategy strategy) {
-        return cards.calculate(strategy);
+    public Integer calculate() {
+        return state.cards().calculate();
     }
 
     public void setBatAmount(Integer amount) {
@@ -44,42 +39,33 @@ public class User {
         return this.batAmount != null;
     }
 
-    public String getCards() {
+    public String showCards() {
         String name = this.name;
-        String cards = this.cards.toString();
-        return name + DELIMITER + cards;
+        String cards = this.state.cards().toString();
+        return name + DELIMITER_1 + cards;
     }
 
     public boolean isDistributed() {
-        return this.isDistributed;
+        return state.isFinished();
     }
 
     public void doneDistribution() {
-        this.isDistributed = true;
-    }
-
-    public void setValue(Integer calculatedValue) {
-        this.cards.setResult(calculatedValue);
+        state = state.stay();
     }
 
     public String getResult() {
-        return "결과" + DELIMITER + this.cards.getResult();
+        return "결과" + DELIMITER_1 + this.state.cards().calculate();
     }
 
-    public String getProfit() {
-        return String.valueOf(profit);
-    }
-
-    public void setProfit(Integer dealerValue) {
-        Integer result = cards.getResult();
-        if (result > MAX_VALUE) {
-            this.profit -= payStrategy.pay(this.batAmount);
-            return;
+    public String getProfit(Integer dealerValue) {
+        Integer result = state.cards().calculate();
+        if (result > BUST_VALUE) {
+            return String.valueOf(-batAmount);
         }
-        if (dealerValue > MAX_VALUE || dealerValue < result) {
-            this.profit += payStrategy.pay(this.batAmount);
+        if (dealerValue > BUST_VALUE || dealerValue < result) {
+            return String.valueOf(state.profit(this.batAmount));
         } else {
-            this.profit -= payStrategy.pay(this.batAmount);
+            return String.valueOf(-batAmount);
         }
     }
 }
