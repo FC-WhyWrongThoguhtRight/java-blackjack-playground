@@ -1,1 +1,6 @@
 rootProject.name = 'java-blackjack-playground'
+include 'blackjack-app-application'
+include 'blackjack-app-domain'
+include 'blackjack-app-infrastructure'
+include 'blackjack-app-presentation'
+

@@ -48,4 +48,16 @@ public class LambdaTest {
         int sum = Lambda.sumAllOverThree(numbers);
         assertThat(sum).isEqualTo(15);
     }
+
+    @Test
+    public void sum() {
+        int sum = Lambda.sum(numbers, (i) -> true);
+        assertThat(sum).isEqualTo(21);
+
+        sum = Lambda.sum(numbers, (i) -> i % 2 == 0);
+        assertThat(sum).isEqualTo(12);
+
+        sum = Lambda.sum(numbers, (i) -> i > 3);
+        assertThat(sum).isEqualTo(15);
+    }
 }
